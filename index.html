@@ -103,28 +103,107 @@
     // Start your code here
     // You may move this JS to another file if you wish
     const logBtn = errorBtns[0];
+    const errorBtn = errorBtns[1];
+    const countBtn = errorBtns[2];
+    const warnBtn = errorBtns[3];
+    const assertBtn = errorBtns[4];
+    const clearBtn = errorBtns[5];
+    const dirBtn = errorBtns[6];
+    const dirxmlBtn = errorBtns[7];
+    const groupStartBtn = errorBtns[8];
+    const groupEndBtn = errorBtns[9];
+    const tableBtn = errorBtns[10];
+    const timerStartBtn = errorBtns[11];
+    const timerEndBtn = errorBtns[12];
+    const traceBtn = errorBtns[13];
+    const globalErrorBtn = errorBtns[14];
+    
     logBtn.addEventListener('click', () => {
       console.log('console log demo');
     });
-
-    const errorBtn = errorBtns[1];
+    
     errorBtn.addEventListener('click', () => {
       console.error('console error demo');
     });
-
-    const countBtn = errorBtns[2];
+    
     countBtn.addEventListener('click', () => {
       console.count('console count demo: ');
     });
-
-    const warnBtn = errorBtns[3];
+    
     warnBtn.addEventListener('click', () => {
-      console.warn('demo');
+      console.warn('console warn demo');
+    });
+    
+    assertBtn.addEventListener('click', () => {
+      const x = 1;
+      const y = 2;
+      const reason = 'x is expected to be less than y';
+      console.assert(x > y, {x, y, reason});
+    });
+    
+    clearBtn.addEventListener('click', () => {
+      console.clear();
+    });
+    
+    dirBtn.addEventListener('click', () => {
+      console.dir(dirBtn);
     });
 
-    const clearBtn = errorBtns[5];
-    countBtn.addEventListener('click', () => {
-      console.clear();
+    dirxmlBtn.addEventListener('click', () => {
+      console.dirxml(dirxmlBtn);
+    });
+
+    groupStartBtn.addEventListener('click', () => {
+      console.group('console group demo');
+    });
+
+    groupEndBtn.addEventListener('click', () => {
+      console.groupEnd('console group demo');
+    });
+
+    tableBtn.addEventListener('click', () => {
+      const classes = [
+        {
+          name: 'Introduction to Modern Cryptography',
+          number: 'CSE 107',
+          credits: 4,
+        },
+        {
+          name: 'Software Engineering',
+          number: 'CSE 110',
+          credits: 4,
+        },
+        {
+          name: 'Programming Languages: Principles and Paradigms',
+          number: 'CSE 130',
+          credits: 4,
+        },
+        {
+          name: 'Languages and Cultures in America',
+          number: 'LIGN 8',
+          credits: 4,
+        },
+      ]
+      console.table(classes);
+    });
+
+    timerStartBtn.addEventListener('click', () => {
+      console.time('console timer demo');
+    });
+
+    timerEndBtn.addEventListener('click', () => {
+      console.timeEnd('console timer demo');
+    });
+
+    traceBtn.addEventListener('click', () => {
+      const first = () => { second(); };
+      const second = () => { third(); };
+      const third = () => { console.trace(); };
+      first();
+    });
+
+    globalErrorBtn.addEventListener('click', () => {
+      // TODO: continue with step 3
     });
   </script>
 </body>
