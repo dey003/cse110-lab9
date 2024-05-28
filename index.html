@@ -102,6 +102,30 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    const logBtn = errorBtns[0];
+    logBtn.addEventListener('click', () => {
+      console.log('console log demo');
+    });
+
+    const errorBtn = errorBtns[1];
+    errorBtn.addEventListener('click', () => {
+      console.error('console error demo');
+    });
+
+    const countBtn = errorBtns[2];
+    countBtn.addEventListener('click', () => {
+      console.count('console count demo: ');
+    });
+
+    const warnBtn = errorBtns[3];
+    warnBtn.addEventListener('click', () => {
+      console.warn('demo');
+    });
+
+    const clearBtn = errorBtns[5];
+    countBtn.addEventListener('click', () => {
+      console.clear();
+    });
   </script>
 </body>
 
