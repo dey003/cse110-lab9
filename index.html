@@ -86,6 +86,14 @@
       <button>Trigger a Global Error</button>
     </section>
   </main>
+  
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "63ae859aadde4d65920db5b8bf3fa469"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>              
 
   <script>
     let form = document.querySelector('form');
@@ -95,7 +103,24 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+
+      class CalculationError extends Error {
+        constructor(message) {
+          super(message);
+          this.name = 'CalculationError';
+        }
+      }
+
+      try {
+        if ((typeof firstNum != "number") || (typeof secondNum) != "number") {
+          throw new CalculationError('invalid numbers');
+        }
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (error) {
+        console.error('calculation error: ' + error.message);
+      } finally {
+        console.log('finished calculating');
+      }
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -203,8 +228,12 @@
     });
 
     globalErrorBtn.addEventListener('click', () => {
-      // TODO: continue with step 3
+      boom();
     });
+
+    window.onerror = () => {
+        console.log('error occured');
+    }
   </script>
 </body>
 
